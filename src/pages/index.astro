@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getWhatsAppLink } from '../utils/whatsapp';
+
+const servicios = [
+  {
+    titulo: 'Derecho Civil',
+    descripcion:
+      'Sucesiones, contratos, daños y perjuicios, derecho de familia y todo lo relacionado con relaciones patrimoniales.',
+  },
+  {
+    titulo: 'Derecho Laboral',
+    descripcion:
+      'Defensa en despidos, indemnizaciones, accidentes de trabajo y asesoría tanto para empleados como empleadores.',
+  },
+  {
+    titulo: 'Derecho Comercial',
+    descripcion:
+      'Constitución de sociedades, contratos comerciales, conflictos societarios y asesoramiento corporativo.',
+  },
+  {
+    titulo: 'Derecho Penal',
+    descripcion:
+      'Defensa en todas las instancias del proceso penal con un equipo experimentado y dedicado a cada caso.',
+  },
+];
+
+const consultaLink = getWhatsAppLink('Hola! Quisiera coordinar una consulta legal.');
+---
+
+<Layout title="Estudio Jurídico — Asesoramiento legal integral">
+  <!-- HERO -->
+  <section class="bg-accent text-primary">
+    <div class="max-w-6xl mx-auto px-6 py-24 md:py-32 text-center">
+      <h1 class="text-4xl md:text-6xl font-serif font-bold text-primary mb-6 leading-tight">
+        Soluciones jurídicas<br />a la medida de su caso
+      </h1>
+      <p class="max-w-2xl mx-auto text-base md:text-lg text-slate-300 mb-10">
+        Más de dos décadas defendiendo los derechos de nuestros clientes con
+        profesionalismo, transparencia y resultados.
+      </p>
+      <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="btn-gold">
+        Consulta gratuita
+      </a>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="bg-white">
+    <div class="max-w-6xl mx-auto px-6 py-20">
+      <div class="text-center mb-14">
+        <h2 class="text-3xl md:text-4xl font-serif font-bold mb-3">Áreas de práctica</h2>
+        <p class="text-secondary max-w-xl mx-auto">
+          Brindamos asesoramiento integral en las principales ramas del derecho.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {servicios.map((s) => (
+          <article class="border border-slate-200 p-6 hover:shadow-lg transition-shadow">
+            <h3 class="text-xl font-serif font-bold mb-2">{s.titulo}</h3>
+            <p class="text-sm text-secondary leading-relaxed">{s.descripcion}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="bg-slate-50">
+    <div class="max-w-4xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold mb-6">Nuestro estudio</h2>
+      <p class="text-secondary leading-relaxed mb-4">
+        Somos un equipo de abogados comprometidos con la excelencia y la cercanía
+        humana. Cada caso es único y por eso ofrecemos estrategias personalizadas,
+        comunicación clara y honorarios transparentes.
+      </p>
+      <p class="text-secondary leading-relaxed">
+        Trabajamos con un único objetivo: que nuestros clientes obtengan el mejor
+        resultado posible.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="bg-white">
+    <div class="max-w-3xl mx-auto px-6 py-20 text-center">
+      <h2 class="text-3xl md:text-4xl font-serif font-bold mb-4">¿Hablamos de su caso?</h2>
+      <p class="text-secondary mb-8">
+        Coordinemos una primera consulta sin cargo y evaluemos juntos cómo podemos ayudarle.
+      </p>
+      <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="btn-gold">
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </section>
+</Layout>

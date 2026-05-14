@@ -1,0 +1,38 @@
+@import 'tailwindcss';
+
+@theme {
+  /* COLORES */
+  --color-primary: #ffffff;
+  --color-accent: #172554;
+  --color-accent-light: #1e40af;
+  --color-secondary: #475569;
+
+  /* FUENTES */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Lato', sans-serif;
+}
+
+@layer components {
+  .nav-link {
+    @apply text-sm font-medium text-secondary hover:text-accent transition-colors duration-300;
+  }
+
+  .mobile-link {
+    @apply text-lg font-medium text-primary hover:text-accent transition-colors duration-300;
+  }
+
+  .btn-gold {
+    @apply bg-accent text-primary font-bold uppercase tracking-wider px-6 py-3 hover:bg-accent-light transition-all duration-300 inline-block;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    @apply bg-white text-secondary font-sans;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif text-accent;
+  }
+}
