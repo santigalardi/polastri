@@ -1,0 +1,70 @@
+---
+/*
+  Sobre María Laura Polastri. Contenido basado en las notas de la reunión:
+  24 años de ejercicio, paso por el Poder Judicial, estilo de trabajo rápido
+  y orientado a la negociación, compromiso personal con cada caso.
+  La clienta pidió transmitir experiencia "desde el inicio" de la relación.
+*/
+import { site } from '../../data/site';
+
+const hitos = [
+  { dato: `${site.trayectoriaAnios} años`, label: 'de ejercicio profesional' },
+  { dato: 'Poder Judicial', label: 'experiencia previa en el ámbito' },
+  { dato: 'Presencial y online', label: 'modalidad de atención' },
+];
+---
+
+<section id="sobre-mi" class="section-warm scroll-mt-20">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24 grid lg:grid-cols-5 gap-10 sm:gap-12 lg:gap-14 items-center">
+    <!-- Retrato -->
+    <div class="lg:col-span-2 relative" data-reveal>
+      <div class="absolute -inset-3 border border-sand-300 rounded-[var(--radius-card)] rotate-2" aria-hidden="true"></div>
+      <img
+        src="/maria-laura-retrato.png"
+        alt={site.abogada}
+        class="relative w-full max-w-sm mx-auto rounded-[var(--radius-card)] shadow-card object-cover"
+        width="724"
+        height="1086"
+        loading="lazy"
+      />
+    </div>
+
+    <!-- Texto -->
+    <div class="lg:col-span-3" data-reveal>
+      <p class="eyebrow mb-3">Sobre mí</p>
+      <h2 class="text-3xl md:text-4xl font-display font-semibold mb-2">
+        {site.abogada}
+      </h2>
+      <p class="font-display text-lg text-mauve-400 mb-5">Abogada</p>
+      <span class="rule mb-6"></span>
+
+      <div class="space-y-4 text-ink-soft leading-relaxed">
+        <p>
+          Ejerzo de forma independiente desde hace más de dos décadas. A lo
+          largo de ese camino pasé por el Poder Judicial y acompañé a familias
+          y trabajadores en los momentos en que más necesitaban una respuesta
+          legal clara.
+        </p>
+        <p>
+          Mi forma de trabajar es directa: atiendo rápido, me involucro de
+          lleno en cada caso y no aflojo hasta resolverlo. Me especialicé en
+          negociación, porque creo que el mejor resultado casi siempre llega
+          de un buen acuerdo.
+        </p>
+        <p>
+          No es una profesión que esté aprendiendo sobre la marcha: es lo que
+          hago desde el primer día, con el mismo compromiso de siempre.
+        </p>
+      </div>
+
+      <dl class="mt-8 grid sm:grid-cols-3 gap-5">
+        {hitos.map((h) => (
+          <div class="border-l-2 border-sand-300 pl-4">
+            <dt class="font-display text-lg font-semibold text-ink">{h.dato}</dt>
+            <dd class="text-sm text-ink-muted">{h.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

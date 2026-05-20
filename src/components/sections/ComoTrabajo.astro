@@ -1,0 +1,50 @@
+---
+/*
+  Forma de trabajo del estudio. Refleja el diferencial descrito en la reunión:
+  trabajo rápido y resolutivo, foco en la negociación, compromiso personal,
+  trato cercano sin tecnicismos.
+*/
+const valores = [
+  {
+    titulo: 'Trato cercano',
+    texto:
+      'Lenguaje claro, sin tecnicismos. Va a entender en todo momento cómo avanza su caso.',
+  },
+  {
+    titulo: 'Respuesta ágil',
+    texto:
+      'Atención rápida y seguimiento constante. No deja sus consultas sin contestar.',
+  },
+  {
+    titulo: 'Foco en negociar',
+    texto:
+      'Buscamos el mejor acuerdo posible para resolver sin desgastar de más a las partes.',
+  },
+  {
+    titulo: 'Compromiso real',
+    texto:
+      'Cada caso se toma como propio y se acompaña hasta lograr el objetivo.',
+  },
+];
+---
+
+<section class="bg-cream">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24">
+    <div class="max-w-2xl mb-8 sm:mb-12" data-reveal>
+      <p class="eyebrow mb-3">Cómo trabajo</p>
+      <h2 class="text-3xl md:text-4xl font-display font-semibold mb-4">
+        Una forma de acompañar
+      </h2>
+      <span class="rule"></span>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {valores.map((v) => (
+        <article class="card p-6 h-full" data-reveal>
+          <h3 class="font-display text-lg font-semibold text-ink mb-2">{v.titulo}</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">{v.texto}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

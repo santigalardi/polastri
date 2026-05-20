@@ -1,38 +1,195 @@
 @import 'tailwindcss';
 
+/*
+  SISTEMA DE DISEÑO — Abogada Polastri
+  Base: brandkit de la clienta (bordó / malva / ocre) + tipografías Lora y Libre Baskerville.
+  Tono buscado: formal-moderno, cálido, que genera confianza.
+*/
+
 @theme {
-  /* COLORES */
-  --color-primary: #ffffff;
-  --color-accent: #172554;
-  --color-accent-light: #1e40af;
-  --color-secondary: #475569;
+  /* ───────── COLOR DE MARCA ─────────
+     Los 3 colores oficiales del brandkit, con escalas derivadas para
+     tener hover/activo/bordes sin salirse de la identidad. */
 
-  /* FUENTES */
-  --font-serif: 'Playfair Display', serif;
-  --font-sans: 'Lato', sans-serif;
-}
+  /* Bordó — color protagonista: CTAs, links, acentos fuertes */
+  --color-brand-50: #fbf0f0;
+  --color-brand-100: #f4d7d7;
+  --color-brand-200: #e3a3a3;
+  --color-brand-300: #d17070;
+  --color-brand-400: #b54a4a;
+  --color-brand-500: #973131; /* OFICIAL brandkit */
+  --color-brand-600: #7e2828;
+  --color-brand-700: #631f1f;
+  --color-brand-800: #481717;
+  --color-brand-900: #2f0f0f;
 
-@layer components {
-  .nav-link {
-    @apply text-sm font-medium text-secondary hover:text-accent transition-colors duration-300;
-  }
+  /* Malva / taupe — color de apoyo: detalles, subtítulos, estados sutiles */
+  --color-mauve-50: #f4f0f0;
+  --color-mauve-100: #e6dedd;
+  --color-mauve-200: #cbbcbb;
+  --color-mauve-300: #b09b99;
+  --color-mauve-400: #947876; /* OFICIAL brandkit */
+  --color-mauve-500: #7c6361;
+  --color-mauve-600: #634f4d;
+  --color-mauve-700: #4a3b3a;
+  --color-mauve-800: #322827;
+  --color-mauve-900: #191413;
 
-  .mobile-link {
-    @apply text-lg font-medium text-primary hover:text-accent transition-colors duration-300;
-  }
+  /* Ocre / arena — color cálido: fondos de sección, bloques destacados */
+  --color-sand-50: #fdf9f3;
+  --color-sand-100: #f9eedd;
+  --color-sand-200: #edd0ab; /* OFICIAL brandkit */
+  --color-sand-300: #e3bd88;
+  --color-sand-400: #d5a45f;
+  --color-sand-500: #c08a3f;
 
-  .btn-gold {
-    @apply bg-accent text-primary font-bold uppercase tracking-wider px-6 py-3 hover:bg-accent-light transition-all duration-300 inline-block;
-  }
+  /* ───────── NEUTROS CÁLIDOS ─────────
+     No están en el brandkit pero hacen falta para fondos, texto y bordes.
+     Llevan una leve carga cálida para no romper la armonía tierra. */
+  --color-cream: #fbf8f4; /* fondo base de página */
+  --color-paper: #ffffff; /* tarjetas / superficies elevadas */
+  --color-line: #e8e1d8; /* bordes y divisores sutiles */
+  --color-ink: #2a2220; /* texto principal — near-black cálido, accesible */
+  --color-ink-soft: #5b524e; /* texto secundario / párrafos largos */
+  --color-ink-muted: #8a807b; /* texto terciario / leyendas */
+
+  /* ───────── SEMÁNTICOS ───────── */
+  --color-success: #3f7d52;
+  --color-warning: #c08a3f;
+  --color-error: #973131;
+
+  /* ───────── TIPOGRAFÍA (brandkit) ─────────
+     Lora para títulos/subtítulos, Libre Baskerville para texto. */
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Libre Baskerville', Georgia, serif;
+
+  /* ───────── ESCALA TIPOGRÁFICA ───────── */
+  --text-display: clamp(2.5rem, 5vw, 4rem);
+  --text-display--line-height: 1.1;
+  --text-display--letter-spacing: -0.02em;
+
+  /* ───────── RADIOS Y SOMBRAS ───────── */
+  --radius-card: 0.5rem;
+  --shadow-soft: 0 1px 3px rgba(42, 34, 32, 0.06), 0 8px 24px rgba(42, 34, 32, 0.06);
+  --shadow-card: 0 2px 8px rgba(42, 34, 32, 0.08), 0 12px 32px rgba(42, 34, 32, 0.08);
+
+  /* ───────── ESPACIADO EXTRA ───────── */
+  --spacing-18: 4.5rem;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    @apply bg-white text-secondary font-sans;
   }
 
-  h1, h2, h3, h4 {
-    @apply font-serif text-accent;
+  body {
+    @apply bg-cream text-ink-soft font-body antialiased;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-ink;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  h1 { @apply text-4xl md:text-5xl font-semibold; }
+  h2 { @apply text-3xl md:text-4xl font-semibold; }
+  h3 { @apply text-2xl font-semibold; }
+  h4 { @apply text-xl font-medium; }
+
+  a {
+    @apply text-brand-500 transition-colors duration-200;
+  }
+  a:hover {
+    @apply text-brand-600;
+  }
+
+  ::selection {
+    background-color: var(--color-sand-200);
+    color: var(--color-ink);
+  }
+}
+
+@layer components {
+  /* ───────── NAVEGACIÓN ───────── */
+  .nav-link {
+    @apply text-sm font-medium text-ink-soft hover:text-brand-500 transition-colors duration-200;
+  }
+
+  /* El menú móvil se muestra sobre fondo bordó oscuro → texto claro */
+  .mobile-link {
+    @apply text-lg font-medium text-cream hover:text-sand-200 transition-colors duration-200;
+  }
+
+  /* ───────── BOTONES ─────────
+     CTA primario en bordó — todas las acciones del sitio empujan a WhatsApp. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-brand-500 text-cream
+           font-display font-medium tracking-wide px-7 py-3.5 rounded-[var(--radius-card)]
+           hover:bg-brand-600 active:bg-brand-700 transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-brand-500
+           font-display font-medium tracking-wide px-7 py-3.5 rounded-[var(--radius-card)]
+           border border-brand-500 hover:bg-brand-50 transition-colors duration-200;
+  }
+
+  /* CTA específico de WhatsApp — canal de conversión principal del sitio */
+  .btn-whatsapp {
+    @apply inline-flex items-center justify-center gap-2 bg-success text-white
+           font-display font-medium tracking-wide px-7 py-3.5 rounded-[var(--radius-card)]
+           hover:brightness-95 transition-all duration-200;
+  }
+
+  /* ───────── SUPERFICIES ───────── */
+  .card {
+    @apply bg-paper border border-line rounded-[var(--radius-card)] shadow-soft;
+  }
+
+  /* Eyebrow / kicker sobre los títulos de sección */
+  .eyebrow {
+    @apply font-display text-sm font-medium uppercase tracking-[0.15em] text-mauve-400;
+  }
+
+  /* Sección con fondo cálido para alternar ritmo visual */
+  .section-warm {
+    @apply bg-sand-50;
+  }
+
+  /* Filete decorativo bajo los títulos — eco del trazo del logo */
+  .rule {
+    @apply block w-12 h-px bg-sand-400;
+  }
+
+  /* Enlace de texto con subrayado fino al pasar el cursor */
+  .link-underline {
+    @apply text-brand-500 underline decoration-sand-300 underline-offset-4
+           hover:decoration-brand-500 transition-colors;
+  }
+}
+
+/* ───────── ANIMACIÓN DE ENTRADA AL SCROLL ─────────
+   Los elementos con [data-reveal] entran suavemente cuando aparecen
+   en pantalla. El JS de cada página les agrega .is-visible. */
+@layer utilities {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 }

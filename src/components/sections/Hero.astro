@@ -1,0 +1,106 @@
+---
+import { getWhatsAppLink } from '../../utils/whatsapp';
+import { site } from '../../data/site';
+
+const consultaLink = getWhatsAppLink();
+
+/* Señales de confianza para la franja inferior — todas tomadas de las notas. */
+const credenciales = [
+  { dato: `${site.trayectoriaAnios} años`, label: 'de ejercicio' },
+  { dato: 'Sucesiones', label: 'y financiación de gastos' },
+  { dato: 'Familia', label: 'divorcios y alimentos' },
+  { dato: 'Presencial y online', label: 'Tres de Febrero y Tigre' },
+];
+---
+
+<section class="relative bg-cream overflow-hidden">
+  <!-- Acentos de fondo: cálidos y muy sutiles, dan profundidad sin ruido -->
+  <div
+    class="absolute -top-32 -right-32 w-[28rem] h-[28rem] rounded-full bg-sand-100/60 blur-3xl pointer-events-none"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-0 opacity-[0.04] pointer-events-none"
+    style="background-image: radial-gradient(circle at 1px 1px, var(--color-brand-500) 1px, transparent 0); background-size: 36px 36px;"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-6 pt-10 sm:pt-16 md:pt-24 pb-0">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <!-- Texto -->
+      <div class="lg:col-span-7 text-center lg:text-left" data-reveal>
+        <p class="inline-flex items-center gap-2.5 mb-4 sm:mb-6">
+          <span class="h-px w-7 bg-sand-400"></span>
+          <span class="font-display text-[0.7rem] sm:text-sm font-medium uppercase tracking-[0.16em] sm:tracking-[0.18em] text-mauve-400">
+            Abogada · {site.trayectoriaAnios} años de ejercicio
+          </span>
+        </p>
+
+        <h1 class="font-display font-semibold text-ink leading-[1.12] sm:leading-[1.08] text-[2rem] sm:text-[2.6rem] md:text-5xl lg:text-[3.6rem] mb-4 sm:mb-6 text-balance">
+          Soluciones jurídicas
+          <span class="block text-brand-500">con criterio y cercanía</span>
+        </h1>
+
+        <p class="text-[0.95rem] sm:text-base md:text-lg text-ink-soft leading-relaxed max-w-md sm:max-w-xl mx-auto lg:mx-0 mb-7 sm:mb-9">
+          Acompañamiento personalizado en sucesiones y derecho de familia.
+          Una mirada directa, orientada a resolver y a negociar la mejor salida
+          para cada caso.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            </svg>
+            Hacer una consulta
+          </a>
+          <a href="#areas" class="btn-secondary w-full sm:w-auto">
+            Ver áreas de práctica
+          </a>
+        </div>
+      </div>
+
+      <!-- Retrato -->
+      <div class="lg:col-span-5" data-reveal>
+        <div class="relative max-w-xs sm:max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+          <!-- Marco escalonado: dos planos que dan sensación editorial -->
+          <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-full h-full rounded-[var(--radius-card)] border border-sand-300" aria-hidden="true"></div>
+          <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-16 sm:w-24 h-16 sm:h-24 rounded-[var(--radius-card)] bg-brand-50" aria-hidden="true"></div>
+          <img
+            src="/maria-laura-escritorio.png"
+            alt={`${site.abogada}, abogada del estudio, en su despacho`}
+            class="relative w-full rounded-[var(--radius-card)] shadow-card object-cover"
+            width="690"
+            height="1086"
+            loading="eager"
+          />
+          <!-- Tarjeta flotante con el nombre -->
+          <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:translate-x-0 bg-paper border border-line rounded-[var(--radius-card)] shadow-soft px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap">
+            <p class="font-display text-[0.8rem] sm:text-sm font-semibold text-ink leading-tight">{site.abogada}</p>
+            <p class="text-[0.68rem] sm:text-xs text-mauve-400">Abogada · Matrícula profesional</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Franja de credibilidad -->
+    <div class="mt-16 sm:mt-20 md:mt-24 border-t border-line" data-reveal>
+      <dl class="grid grid-cols-2 lg:grid-cols-4">
+        {credenciales.map((c, i) => (
+          <div class:list={[
+            'py-5 sm:py-7 px-3 sm:px-5 text-center sm:text-left',
+            i < 2 ? 'border-b lg:border-b-0' : '',
+            i % 2 === 0 ? 'border-r' : '',
+            i !== 3 ? 'lg:border-r' : '',
+            'border-line',
+          ]}>
+            <dt class="font-display text-base sm:text-xl font-semibold text-brand-500">{c.dato}</dt>
+            <dd class="text-[0.72rem] sm:text-sm text-ink-muted mt-0.5">{c.label}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </div>
+</section>

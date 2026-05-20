@@ -1,15 +1,35 @@
 ---
+import { getWhatsAppLink } from '../utils/whatsapp';
+
 const navItems = [
-  { href: '/#servicios', label: 'Servicios' },
-  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/#areas', label: 'Áreas' },
+  { href: '/#sucesiones', label: 'Sucesiones' },
+  { href: '/#sobre-mi', label: 'Sobre mí' },
+  { href: '/#faq', label: 'Preguntas' },
   { href: '/#contacto', label: 'Contacto' },
 ];
+
+const consultaLink = getWhatsAppLink();
 ---
 
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-200">
-  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="/" class="font-serif text-xl font-bold text-accent tracking-wide">
-      Estudio Jurídico
+<header class="sticky top-0 z-40 bg-cream/95 backdrop-blur border-b border-line">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 h-18 md:h-20 flex items-center justify-between gap-3">
+    <a href="/" class="flex items-center gap-2.5 sm:gap-3 group min-w-0" aria-label="Inicio — Abogada Polastri">
+      <img
+        src="/logo-nobg.png"
+        alt=""
+        class="h-12 sm:h-14 md:h-16 w-auto shrink-0 transition-transform duration-200 group-hover:scale-105"
+        width="514"
+        height="363"
+      />
+      <span class="flex flex-col leading-none border-l border-line pl-2.5 sm:pl-3 min-w-0">
+        <span class="font-display text-base sm:text-lg font-semibold text-brand-700 tracking-tight truncate">
+          Abogada Polastri
+        </span>
+        <span class="font-display text-[0.6rem] sm:text-[0.68rem] uppercase tracking-[0.18em] sm:tracking-[0.22em] text-mauve-400 mt-1 truncate">
+          Sucesiones y Familia
+        </span>
+      </span>
     </a>
 
     <nav class="hidden md:flex items-center gap-8">
@@ -22,48 +42,102 @@ const navItems = [
       id="mobile-menu-toggle"
       aria-label="Abrir menú"
       aria-expanded="false"
-      class="md:hidden text-accent p-2"
+      aria-controls="mobile-menu"
+      class="md:hidden shrink-0 -mr-2 p-2 text-brand-700"
     >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <line x1="3" y1="6" x2="21" y2="6"></line>
         <line x1="3" y1="12" x2="21" y2="12"></line>
         <line x1="3" y1="18" x2="21" y2="18"></line>
       </svg>
     </button>
   </div>
-
-  <div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-50 bg-accent flex-col items-center justify-center gap-8">
-    <button id="mobile-menu-close" aria-label="Cerrar menú" class="absolute top-4 right-6 text-primary p-2">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </button>
-    {navItems.map((item) => (
-      <a href={item.href} class="mobile-link" data-mobile-link>{item.label}</a>
-    ))}
-  </div>
 </header>
+
+<!-- Menú móvil: FUERA del header para no quedar atrapado en su stacking context -->
+<div id="mobile-menu" class="md:hidden">
+  <!-- Overlay oscuro -->
+  <div
+    id="mobile-menu-overlay"
+    class="fixed inset-0 z-50 bg-ink/50 opacity-0 pointer-events-none transition-opacity duration-300"
+  >
+  </div>
+
+  <!-- Panel deslizante -->
+  <aside
+    id="mobile-menu-panel"
+    class="fixed top-0 right-0 z-50 h-dvh w-[82%] max-w-xs bg-brand-700 text-cream shadow-2xl translate-x-full transition-transform duration-300 ease-out flex flex-col"
+    aria-hidden="true"
+  >
+    <div class="flex items-center justify-between px-6 h-18 border-b border-cream/15">
+      <span class="font-display text-base font-semibold text-cream">Abogada Polastri</span>
+      <button id="mobile-menu-close" aria-label="Cerrar menú" class="-mr-2 p-2 text-cream">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="flex flex-col px-3 py-4">
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class="font-display text-lg text-cream py-3.5 px-3 rounded-[var(--radius-card)] hover:bg-cream/10 transition-colors"
+          data-mobile-link
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="mt-auto p-5 border-t border-cream/15">
+      <a
+        href={consultaLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-whatsapp w-full"
+        data-mobile-link
+      >
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+        </svg>
+        Escribir por WhatsApp
+      </a>
+    </div>
+  </aside>
+</div>
 
 <script>
   const toggle = document.getElementById('mobile-menu-toggle');
   const closeBtn = document.getElementById('mobile-menu-close');
-  const menu = document.getElementById('mobile-menu');
+  const overlay = document.getElementById('mobile-menu-overlay');
+  const panel = document.getElementById('mobile-menu-panel');
 
   const open = () => {
-    menu?.classList.remove('hidden');
-    menu?.classList.add('flex');
+    overlay?.classList.remove('opacity-0', 'pointer-events-none');
+    panel?.classList.remove('translate-x-full');
+    panel?.setAttribute('aria-hidden', 'false');
     toggle?.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   };
+
   const close = () => {
-    menu?.classList.add('hidden');
-    menu?.classList.remove('flex');
+    overlay?.classList.add('opacity-0', 'pointer-events-none');
+    panel?.classList.add('translate-x-full');
+    panel?.setAttribute('aria-hidden', 'true');
     toggle?.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   };
 
   toggle?.addEventListener('click', open);
   closeBtn?.addEventListener('click', close);
+  overlay?.addEventListener('click', close);
   document.querySelectorAll('[data-mobile-link]').forEach((link) => {
     link.addEventListener('click', close);
+  });
+  // Cerrar con tecla Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
   });
 </script>

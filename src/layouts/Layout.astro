@@ -3,6 +3,7 @@ import '../styles/global.css';
 import NavBar from '../components/NavBar.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { site } from '../data/site';
 
 interface Props {
   title?: string;
@@ -10,8 +11,8 @@ interface Props {
 }
 
 const {
-  title = 'Estudio Jurídico',
-  description = 'Asesoramiento legal integral y soluciones jurídicas a medida.',
+  title = `${site.nombre} — Abogada ${site.abogada}`,
+  description = site.descripcion,
 } = Astro.props;
 ---
 
@@ -20,14 +21,25 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#973131" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_AR" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
     />
-    <meta name="description" content={description} />
     <title>{title}</title>
   </head>
   <body class="flex flex-col min-h-screen">

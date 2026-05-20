@@ -1,0 +1,69 @@
+---
+/*
+  Diferencial clave del estudio (definido en la reunión): financiamiento de
+  los gastos legales de la sucesión, que se abonan recién al concretarse la
+  venta de la propiedad, en colaboración con inmobiliarias.
+  PENDIENTE: la clienta enviará el texto definitivo de esta propuesta.
+*/
+import { getWhatsAppLink } from '../../utils/whatsapp';
+
+const consultaLink = getWhatsAppLink(
+  'Hola María Laura, quisiera consultar por la sucesión de una propiedad.'
+);
+
+const pasos = [
+  {
+    n: '01',
+    titulo: 'Conversamos su caso',
+    texto: 'Revisamos la situación de la propiedad y de la sucesión, sin compromiso.',
+  },
+  {
+    n: '02',
+    titulo: 'El estudio adelanta los gastos',
+    texto: 'No necesita disponer del dinero por adelantado para iniciar el trámite.',
+  },
+  {
+    n: '03',
+    titulo: 'Se abona al vender',
+    texto: 'Los honorarios y gastos se cancelan al concretarse la venta de la propiedad.',
+  },
+];
+---
+
+<section id="sucesiones" class="bg-brand-700 text-cream scroll-mt-20 overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24 grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
+    <!-- Texto -->
+    <div data-reveal>
+      <p class="eyebrow text-sand-200 mb-3">Propuesta para sucesiones</p>
+      <h2 class="text-[1.6rem] sm:text-3xl md:text-4xl font-display font-semibold text-cream mb-5 leading-tight text-balance">
+        ¿Tiene una propiedad para vender pero la sucesión es un freno?
+      </h2>
+      <p class="text-sand-100/85 leading-relaxed mb-4">
+        Muchas familias posponen la venta de un inmueble porque no pueden
+        afrontar los gastos del proceso sucesorio en ese momento.
+      </p>
+      <p class="text-sand-100/85 leading-relaxed mb-8">
+        El estudio ofrece <strong class="text-cream">financiar los gastos de la
+        sucesión</strong>: usted no adelanta dinero, y los honorarios se abonan
+        recién cuando la propiedad se vende. Trabajamos en conjunto con
+        inmobiliarias para acompañar todo el recorrido.
+      </p>
+      <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp w-full sm:w-auto">
+        Consultar por mi caso
+      </a>
+    </div>
+
+    <!-- Pasos -->
+    <div class="space-y-4" data-reveal>
+      {pasos.map((paso) => (
+        <div class="flex gap-4 sm:gap-5 rounded-[var(--radius-card)] bg-cream/[0.06] border border-cream/10 p-5 sm:p-6">
+          <span class="font-display text-2xl font-semibold text-sand-200 shrink-0">{paso.n}</span>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-cream mb-1">{paso.titulo}</h3>
+            <p class="text-sm text-sand-100/80 leading-relaxed">{paso.texto}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,23 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getWhatsAppLink } from '../utils/whatsapp';
+
+const contactoLink = getWhatsAppLink(
+  'Hola María Laura, quisiera consultar sobre mis datos personales.'
+);
 ---
 
 <Layout
-  title="Política de privacidad — Estudio Jurídico"
+  title="Política de privacidad — Abogada Polastri"
   description="Cómo recolectamos, usamos y protegemos su información personal."
 >
   <article class="max-w-3xl mx-auto px-6 py-20">
-    <h1 class="text-3xl md:text-4xl font-serif font-bold mb-8">Política de privacidad</h1>
+    <h1 class="text-3xl md:text-4xl font-display font-semibold mb-8">Política de privacidad</h1>
 
-    <div class="space-y-6 text-secondary leading-relaxed">
+    <div class="space-y-6 text-ink-soft leading-relaxed">
       <p>
-        En el Estudio Jurídico nos comprometemos a proteger la privacidad de
+        La Abogada Polastri se compromete a proteger la privacidad de
         quienes visitan nuestro sitio web y de quienes nos contactan para
         recibir asesoramiento legal. La presente política describe qué datos
         recolectamos y cómo los utilizamos.
       </p>
 
-      <h2 class="text-2xl font-serif font-bold pt-4">1. Información que recolectamos</h2>
+      <h2 class="text-2xl font-display font-semibold pt-4">1. Información que recolectamos</h2>
       <p>
         Podemos recolectar datos personales que usted nos proporciona
         voluntariamente al completar formularios de contacto, escribir por
@@ -25,7 +30,7 @@ import Layout from '../layouts/Layout.astro';
         cualquier detalle del caso que desee compartir.
       </p>
 
-      <h2 class="text-2xl font-serif font-bold pt-4">2. Uso de la información</h2>
+      <h2 class="text-2xl font-display font-semibold pt-4">2. Uso de la información</h2>
       <p>
         Sus datos serán utilizados exclusivamente para responder a su consulta,
         prestar el servicio profesional contratado y cumplir con nuestras
@@ -33,23 +38,23 @@ import Layout from '../layouts/Layout.astro';
         terceros.
       </p>
 
-      <h2 class="text-2xl font-serif font-bold pt-4">3. Confidencialidad</h2>
+      <h2 class="text-2xl font-display font-semibold pt-4">3. Confidencialidad</h2>
       <p>
         Toda la información compartida en el marco de una consulta o relación
         profesional se encuentra amparada por el secreto profesional del
         abogado.
       </p>
 
-      <h2 class="text-2xl font-serif font-bold pt-4">4. Derechos del titular</h2>
+      <h2 class="text-2xl font-display font-semibold pt-4">4. Derechos del titular</h2>
       <p>
         Usted puede solicitar en cualquier momento el acceso, rectificación o
-        supresión de sus datos escribiendo a
-        <a href="mailto:contacto@estudio.com" class="text-accent-light hover:underline">
-          contacto@estudio.com
+        supresión de sus datos
+        <a href={contactoLink} target="_blank" rel="noopener noreferrer" class="link-underline">
+          escribiéndonos por WhatsApp
         </a>.
       </p>
 
-      <h2 class="text-2xl font-serif font-bold pt-4">5. Cambios en esta política</h2>
+      <h2 class="text-2xl font-display font-semibold pt-4">5. Cambios en esta política</h2>
       <p>
         Podemos actualizar esta política ocasionalmente. La versión vigente
         siempre estará publicada en esta página.

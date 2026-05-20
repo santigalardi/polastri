@@ -1,0 +1,58 @@
+---
+/*
+  Preguntas frecuentes. Sección acordada en la reunión. Las respuestas se
+  apoyan únicamente en lo conversado: áreas de práctica, financiación de
+  sucesiones, modalidad de atención y canal de contacto por WhatsApp.
+  No se mencionan precios ni honorarios concretos.
+*/
+const faqs = [
+  {
+    q: '¿En qué temas puede ayudarme el estudio?',
+    a: 'El estudio se enfoca principalmente en sucesiones y derecho de familia —divorcios con liquidación de bienes y cuotas alimentarias—. También asesora en temas inmobiliarios y de derecho laboral.',
+  },
+  {
+    q: '¿Cómo funciona la financiación de la sucesión?',
+    a: 'Si tiene una propiedad para vender y no puede afrontar los gastos del proceso sucesorio en este momento, el estudio adelanta esos gastos. Los honorarios se abonan recién cuando la propiedad se vende. Lo ideal es conversar su caso para ver cómo aplicarlo.',
+  },
+  {
+    q: '¿La atención es presencial o también online?',
+    a: 'Ambas. Puede elegir una entrevista presencial en los puntos de atención o una consulta de forma remota, según lo que le quede más cómodo.',
+  },
+  {
+    q: '¿Dónde atiende el estudio?',
+    a: 'Hay atención en Santos Lugares (Partido de Tres de Febrero) los martes y jueves, y en la zona de Tigre el resto de la semana con horario a convenir.',
+  },
+  {
+    q: '¿Cómo hago una consulta?',
+    a: 'El canal más directo es WhatsApp. Escríbanos contando brevemente su situación y le respondemos para coordinar los próximos pasos.',
+  },
+];
+---
+
+<section id="faq" class="bg-cream scroll-mt-20">
+  <div class="max-w-3xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24">
+    <div class="mb-8 sm:mb-12 text-center" data-reveal>
+      <p class="eyebrow mb-3">Preguntas frecuentes</p>
+      <h2 class="text-[1.7rem] sm:text-3xl md:text-4xl font-display font-semibold">
+        Lo que suelen consultarnos
+      </h2>
+    </div>
+
+    <div class="divide-y divide-line border-y border-line">
+      {faqs.map((faq) => (
+        <details class="group" data-reveal>
+          <summary class="flex items-center justify-between gap-3 sm:gap-4 cursor-pointer py-5 list-none">
+            <span class="font-display text-base sm:text-lg font-medium text-ink">{faq.q}</span>
+            <span class="shrink-0 w-7 h-7 rounded-full border border-line flex items-center justify-center text-brand-500 transition-transform duration-200 group-open:rotate-45">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
+          </summary>
+          <p class="text-ink-soft leading-relaxed pb-5 pr-2 sm:pr-10">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

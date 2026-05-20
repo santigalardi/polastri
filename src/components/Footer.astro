@@ -1,37 +1,112 @@
 ---
+import { site, redes, ubicaciones } from '../data/site';
+import { getWhatsAppLink } from '../utils/whatsapp';
+
 const year = new Date().getFullYear();
+const consultaLink = getWhatsAppLink();
+
+const navItems = [
+  { href: '/#areas', label: 'Áreas de práctica' },
+  { href: '/#sucesiones', label: 'Sucesiones' },
+  { href: '/#sobre-mi', label: 'Sobre mí' },
+  { href: '/#faq', label: 'Preguntas frecuentes' },
+  { href: '/#contacto', label: 'Contacto' },
+];
 ---
 
-<footer class="bg-accent text-primary">
-  <div class="max-w-6xl mx-auto px-6 py-12 grid gap-8 md:grid-cols-3">
+<footer class="bg-brand-800 text-cream">
+  <div class="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3">
+    <!-- Marca -->
     <div>
-      <h3 class="font-serif text-xl mb-3 text-primary">Estudio Jurídico</h3>
-      <p class="text-sm text-slate-300">
-        Asesoramiento legal integral con compromiso, ética y resultados.
+      <div class="flex items-center gap-3 mb-4">
+        <img
+          src="/logo-nobg.png"
+          alt=""
+          class="h-14 w-auto"
+          style="filter: brightness(0) invert(1);"
+          width="514"
+          height="363"
+        />
+        <span class="flex flex-col leading-none border-l border-cream/20 pl-3">
+          <span class="font-display text-lg font-semibold text-cream tracking-tight">Abogada Polastri</span>
+          <span class="font-display text-[0.68rem] uppercase tracking-[0.22em] text-sand-200 mt-1">Sucesiones y Familia</span>
+        </span>
+      </div>
+      <p class="text-sm text-sand-100/75 leading-relaxed max-w-xs">
+        Asesoramiento en sucesiones y derecho de familia, con un trato cercano
+        y el compromiso de acompañar cada caso hasta resolverlo.
       </p>
     </div>
 
+    <!-- Navegación -->
     <div>
-      <h4 class="font-serif text-lg mb-3 text-primary">Enlaces</h4>
-      <ul class="space-y-2 text-sm">
-        <li><a href="/" class="hover:text-white transition-colors text-slate-300">Inicio</a></li>
-        <li><a href="/privacidad" class="hover:text-white transition-colors text-slate-300">Política de privacidad</a></li>
-        <li><a href="/terminos" class="hover:text-white transition-colors text-slate-300">Términos y condiciones</a></li>
+      <h4 class="font-display text-base font-semibold mb-4 text-cream">Secciones</h4>
+      <ul class="space-y-2.5 text-sm">
+        {navItems.map((item) => (
+          <li>
+            <a href={item.href} class="text-sand-100/75 hover:text-cream transition-colors">
+              {item.label}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
 
+    <!-- Contacto -->
     <div>
-      <h4 class="font-serif text-lg mb-3 text-primary">Contacto</h4>
-      <ul class="space-y-2 text-sm text-slate-300">
-        <li>contacto@estudio.com</li>
-        <li>+54 11 0000-0000</li>
+      <h4 class="font-display text-base font-semibold mb-4 text-cream">Atención</h4>
+      <ul class="space-y-2.5 text-sm text-sand-100/75">
+        {ubicaciones.map((u) => (
+          <li>{u.zona} — {u.partido}</li>
+        ))}
+        <li class="pt-1">
+          <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="text-cream hover:text-sand-200 transition-colors">
+            Escribir por WhatsApp →
+          </a>
+        </li>
       </ul>
+      <div class="flex gap-3 mt-5">
+        <a href={redes.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-sand-100/70 hover:text-cream transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/>
+          </svg>
+        </a>
+        <a href={redes.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="text-sand-100/70 hover:text-cream transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07c0 6.02 4.39 11.01 10.13 11.93v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.8-4.69 4.54-4.69 1.31 0 2.69.24 2.69.24v2.97h-1.52c-1.49 0-1.96.93-1.96 1.89v2.26h3.33l-.53 3.49h-2.8v8.44C19.61 23.08 24 18.09 24 12.07Z"/>
+          </svg>
+        </a>
+        <a href={redes.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="text-sand-100/70 hover:text-cream transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0zM7.98 8h4.79v2.19h.07c.67-1.27 2.3-2.6 4.73-2.6 5.06 0 6 3.33 6 7.66V24h-5v-7.6c0-1.81-.03-4.14-2.52-4.14-2.53 0-2.92 1.97-2.92 4v7.74h-5z"/>
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 
-  <div class="border-t border-white/10">
-    <div class="max-w-6xl mx-auto px-6 py-4 text-xs text-slate-400 text-center">
-      © {year} Estudio Jurídico. Todos los derechos reservados.
+  <div class="border-t border-cream/10">
+    <div class="max-w-6xl mx-auto px-5 sm:px-6 py-6 pb-24 sm:pb-6 flex flex-col gap-4 text-xs text-sand-100/65">
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 items-center justify-between text-center sm:text-left">
+        <p>© {year} {site.nombre}. Todos los derechos reservados.</p>
+        <div class="flex gap-5">
+          <a href="/privacidad" class="text-sand-100/75 hover:text-cream transition-colors">Privacidad</a>
+          <a href="/terminos" class="text-sand-100/75 hover:text-cream transition-colors">Términos</a>
+        </div>
+      </div>
+      <p class="text-center sm:text-left text-sand-100/55 sm:border-t-0 border-t border-cream/10 pt-3 sm:pt-0">
+        Diseño y desarrollo por
+        <a
+          href="https://www.digitalya.com.ar"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-sand-100/85 hover:text-cream transition-colors"
+        >
+          DigitalYa
+        </a>
+      </p>
     </div>
   </div>
 </footer>
