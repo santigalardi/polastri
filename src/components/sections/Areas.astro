@@ -5,6 +5,8 @@
   destacadas ocupan tarjetas grandes; las otras dos, tarjetas secundarias.
 */
 
+import { getWhatsAppLink } from '../../utils/whatsapp';
+
 /* Iconos por área — trazo lineal, coherentes entre sí (estilo Lucide). */
 const iconos = {
   // Documento / legado — sucesiones
@@ -21,24 +23,34 @@ const iconos = {
     '<path d="M12 3v18"/><path d="M5 21h14"/><path d="m3 8 4-4 4 4"/><path d="m13 8 4-4 4 4"/><path d="M7 4c0 4-2 6-4 6"/><path d="M7 4c0 4 2 6 4 6"/><path d="M17 4c0 4-2 6-4 6"/><path d="M17 4c0 4 2 6 4 6"/>',
 };
 
+const consultaFamiliaLink = getWhatsAppLink(
+  'Hola María Laura, quería consultarle por un tema de derecho de familia.'
+);
+const consultaInmobiliarioLink = getWhatsAppLink(
+  'Hola María Laura, quería consultarle por un tema inmobiliario.'
+);
+const consultaDespidoLink = getWhatsAppLink(
+  'Hola María Laura, fui despedido/a y me gustaría revisar mi caso.'
+);
+
 const destacadas = [
   {
     titulo: 'Sucesiones',
     icono: iconos.sucesiones,
     descripcion:
-      'Tramitación completa de la sucesión para que los bienes lleguen a quienes corresponde. ' +
-      'Acompañamiento en cada etapa del proceso, con la posibilidad de financiar los gastos.',
-    detalle: 'Ver propuesta de financiación',
-    ancla: '#sucesiones',
+      'Tramitación completa de sucesorios con y sin testamento: declaratoria de herederos, ' +
+      'partición y resolución de cada caso. Posibilidad de financiamiento desde el inicio ' +
+      'hasta el fin del sucesorio.',
+    cta: { label: 'Ver propuesta de financiación', href: '#sucesiones', external: false },
   },
   {
     titulo: 'Derecho de Familia',
     icono: iconos.familia,
     descripcion:
-      'Divorcios con liquidación de bienes y cuotas alimentarias. ' +
-      'Foco en la negociación para alcanzar acuerdos claros y evitar conflictos prolongados.',
-    detalle: null,
-    ancla: '#contacto',
+      'Divorcios, liquidación de bienes, atribución del hogar, cuota alimentaria y ' +
+      'compensación económica. Foco en la negociación para alcanzar acuerdos rápidos, ' +
+      'claros y evitar conflictos prolongados.',
+    cta: { label: 'Consultar por mi caso', href: consultaFamiliaLink, external: true },
   },
 ];
 
@@ -48,18 +60,22 @@ const complementarias = [
     icono: iconos.inmobiliario,
     descripcion:
       'Asesoramiento en operaciones y conflictos vinculados a propiedades.',
+    cta: { label: 'Consultar por una propiedad', href: consultaInmobiliarioLink, external: true },
   },
   {
     titulo: 'Despidos y Derecho Laboral',
     icono: iconos.laboral,
     descripcion:
-      'Defensa de los derechos del trabajador en situaciones de despido.',
+      'Despidos con o sin causa, liquidaciones finales, diferencias salariales y negociación ' +
+      'extrajudicial con el empleador. Si fue despedido y no sabe si la liquidación es correcta, ' +
+      'podemos revisarla.',
+    cta: { label: 'Consultar por mi despido', href: consultaDespidoLink, external: true },
   },
 ];
 ---
 
 <section id="areas" class="bg-cream scroll-mt-20">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 pt-10 sm:pt-12 md:pt-14 pb-14 sm:pb-20 md:pb-24">
     <div class="max-w-2xl mb-12" data-reveal>
       <p class="eyebrow mb-3">Áreas de práctica</p>
       <h2 class="text-3xl md:text-4xl font-display font-semibold mb-4">
@@ -81,9 +97,14 @@ const complementarias = [
           </div>
           <h3 class="text-2xl font-display font-semibold text-ink mb-3">{area.titulo}</h3>
           <p class="text-ink-soft leading-relaxed grow">{area.descripcion}</p>
-          {area.detalle && (
-            <a href={area.ancla} class="link-underline mt-5 inline-block text-sm font-medium">
-              {area.detalle} →
+          {area.cta && (
+            <a
+              href={area.cta.href}
+              target={area.cta.external ? '_blank' : undefined}
+              rel={area.cta.external ? 'noopener noreferrer' : undefined}
+              class="link-underline mt-5 inline-block text-sm font-medium"
+            >
+              {area.cta.label} →
             </a>
           )}
         </article>
@@ -100,6 +121,16 @@ const complementarias = [
           <div>
             <h3 class="text-lg font-display font-semibold text-ink mb-1.5">{area.titulo}</h3>
             <p class="text-sm text-ink-soft leading-relaxed">{area.descripcion}</p>
+            {area.cta && (
+              <a
+                href={area.cta.href}
+                target={area.cta.external ? '_blank' : undefined}
+                rel={area.cta.external ? 'noopener noreferrer' : undefined}
+                class="link-underline mt-3 inline-block text-sm font-medium"
+              >
+                {area.cta.label} →
+              </a>
+            )}
           </div>
         </article>
       ))}

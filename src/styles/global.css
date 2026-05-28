@@ -115,7 +115,7 @@
 @layer components {
   /* ───────── NAVEGACIÓN ───────── */
   .nav-link {
-    @apply text-sm font-medium text-ink-soft hover:text-brand-500 transition-colors duration-200;
+    @apply font-display text-[0.95rem] font-medium text-ink hover:text-brand-500 transition-colors duration-200;
   }
 
   /* El menú móvil se muestra sobre fondo bordó oscuro → texto claro */
@@ -142,6 +142,19 @@
     @apply inline-flex items-center justify-center gap-2 bg-success text-white
            font-display font-medium tracking-wide px-7 py-3.5 rounded-[var(--radius-card)]
            hover:brightness-95 transition-all duration-200;
+  }
+
+  /* CTAs para fondos oscuros (bordó) — invierten la jerarquía de color */
+  .btn-cream-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-cream text-brand-700
+           font-display font-medium tracking-wide px-7 py-3.5 rounded-[var(--radius-card)]
+           hover:bg-sand-100 transition-colors duration-200;
+  }
+
+  .btn-cream-secondary {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-cream
+           font-display font-medium tracking-wide px-7 py-3.5 rounded-[var(--radius-card)]
+           border border-cream/40 hover:bg-cream/10 hover:border-cream/70 transition-colors duration-200;
   }
 
   /* ───────── SUPERFICIES ───────── */

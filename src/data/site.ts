@@ -15,6 +15,8 @@ export const site = {
     'Estudio jurídico especializado en sucesiones y derecho de familia. ' +
     'Acompañamiento cercano y personalizado en cada caso.',
   trayectoriaAnios: 24,
+  // Reserva de turnos presenciales por Google Calendar (link enviado por la clienta).
+  agendaTurnosUrl: 'https://calendar.app.google/8q5xxUcC2h2Af5487',
 };
 
 /* ───────── Redes sociales ─────────
@@ -37,6 +39,6 @@ export const ubicaciones = [
   {
     zona: 'Tigre',
     partido: 'Provincia de Buenos Aires',
-    horario: 'Resto de la semana, con horario a convenir',
+    horario: 'Lunes, miércoles y viernes, con horario a convenir',
   },
 ];

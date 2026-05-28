@@ -7,8 +7,11 @@
 */
 import { getWhatsAppLink } from '../../utils/whatsapp';
 
-const consultaLink = getWhatsAppLink(
-  'Hola María Laura, quisiera consultar por la sucesión de una propiedad.'
+const presupuestoFinanciadoLink = getWhatsAppLink(
+  'Hola María Laura, quisiera un presupuesto sucesorio financiado.'
+);
+const presupuestoAdelantadoLink = getWhatsAppLink(
+  'Hola María Laura, quisiera un presupuesto de sucesorio con pago adelantado.'
 );
 
 const pasos = [
@@ -24,8 +27,10 @@ const pasos = [
   },
   {
     n: '03',
-    titulo: 'Se abona al vender',
-    texto: 'Los honorarios y gastos se cancelan al concretarse la venta de la propiedad.',
+    titulo: 'Se abona al vender o al plazo acordado',
+    texto:
+      'Los honorarios y gastos se cancelan al momento de concretar la operación inmobiliaria ' +
+      'y/o al cumplimiento del plazo acordado.',
   },
 ];
 ---
@@ -42,15 +47,34 @@ const pasos = [
         Muchas familias posponen la venta de un inmueble porque no pueden
         afrontar los gastos del proceso sucesorio en ese momento.
       </p>
-      <p class="text-sand-100/85 leading-relaxed mb-8">
-        El estudio ofrece <strong class="text-cream">financiar los gastos de la
-        sucesión</strong>: usted no adelanta dinero, y los honorarios se abonan
-        recién cuando la propiedad se vende. Trabajamos en conjunto con
-        inmobiliarias para acompañar todo el recorrido.
+      <p class="text-sand-100/85 leading-relaxed mb-3">
+        El estudio puede <strong class="text-cream">financiar la totalidad de la
+        sucesión</strong> y hasta posponer el pago. Usted no abona nada para
+        iniciar ni continuar el trámite.
       </p>
-      <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="btn-whatsapp w-full sm:w-auto">
-        Consultar por mi caso
-      </a>
+      <p class="text-sand-100/85 leading-relaxed mb-8">
+        Los gastos y honorarios se abonan al concretarse la venta y/o mediante
+        plan de pagos. Trabajamos articuladamente con inmobiliarias para
+        acompañar todo el proceso.
+      </p>
+      <div class="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+        <a
+          href={presupuestoFinanciadoLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cream-primary w-full sm:w-auto"
+        >
+          Presupuesto sucesorio financiado
+        </a>
+        <a
+          href={presupuestoAdelantadoLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-cream-secondary w-full sm:w-auto"
+        >
+          Presupuesto con pago adelantado
+        </a>
+      </div>
     </div>
 
     <!-- Pasos -->

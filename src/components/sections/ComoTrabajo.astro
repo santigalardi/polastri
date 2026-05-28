@@ -8,28 +8,23 @@ const valores = [
   {
     titulo: 'Trato cercano',
     texto:
-      'Lenguaje claro, sin tecnicismos. Va a entender en todo momento cómo avanza su caso.',
-  },
-  {
-    titulo: 'Respuesta ágil',
-    texto:
-      'Atención rápida y seguimiento constante. No deja sus consultas sin contestar.',
+      'Explicación clara, sin tecnicismos. En todo momento va a saber exactamente en qué punto está su caso.',
   },
   {
     titulo: 'Foco en negociar',
     texto:
-      'Buscamos el mejor acuerdo posible para resolver sin desgastar de más a las partes.',
+      'Busco el mejor acuerdo posible antes de litigar. El conflicto prolongado nunca es la mejor opción para ninguna de las partes.',
   },
   {
     titulo: 'Compromiso real',
     texto:
-      'Cada caso se toma como propio y se acompaña hasta lograr el objetivo.',
+      'Cada caso es tomado como propio hasta la obtención de la solución buscada.',
   },
 ];
 ---
 
 <section class="bg-cream">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 md:pt-24 pb-10 sm:pb-12 md:pb-14">
     <div class="max-w-2xl mb-8 sm:mb-12" data-reveal>
       <p class="eyebrow mb-3">Cómo trabajo</p>
       <h2 class="text-3xl md:text-4xl font-display font-semibold mb-4">
@@ -38,7 +33,7 @@ const valores = [
       <span class="rule"></span>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {valores.map((v) => (
         <article class="card p-6 h-full" data-reveal>
           <h3 class="font-display text-lg font-semibold text-ink mb-2">{v.titulo}</h3>

@@ -3,10 +3,11 @@ import { getWhatsAppLink } from '../../utils/whatsapp';
 import { site } from '../../data/site';
 
 const consultaLink = getWhatsAppLink();
+const turnosLink = site.agendaTurnosUrl;
 
 /* Señales de confianza para la franja inferior — todas tomadas de las notas. */
 const credenciales = [
-  { dato: `${site.trayectoriaAnios} años`, label: 'de ejercicio' },
+  { dato: `${site.trayectoriaAnios} años`, label: 'de ejercicio profesional' },
   { dato: 'Sucesiones', label: 'y financiación de gastos' },
   { dato: 'Familia', label: 'divorcios y alimentos' },
   { dato: 'Presencial y online', label: 'Tres de Febrero y Tigre' },
@@ -27,57 +28,71 @@ const credenciales = [
   >
   </div>
 
-  <div class="relative max-w-6xl mx-auto px-5 sm:px-6 pt-10 sm:pt-16 md:pt-24 pb-0">
-    <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+  <div class="relative max-w-6xl mx-auto px-5 sm:px-6 pt-8 sm:pt-16 md:pt-24 pb-0">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
       <!-- Texto -->
-      <div class="lg:col-span-7 text-center lg:text-left" data-reveal>
-        <p class="inline-flex items-center gap-2.5 mb-4 sm:mb-6">
-          <span class="h-px w-7 bg-sand-400"></span>
-          <span class="font-display text-[0.7rem] sm:text-sm font-medium uppercase tracking-[0.16em] sm:tracking-[0.18em] text-mauve-400">
-            Abogada · {site.trayectoriaAnios} años de ejercicio
+      <div class="lg:col-span-7 text-center lg:text-left order-2 lg:order-1" data-reveal>
+        <p class="inline-flex items-center gap-2.5 mb-3 sm:mb-6">
+          <span class="h-px w-6 sm:w-7 bg-sand-400"></span>
+          <span class="font-display text-[0.68rem] sm:text-sm font-medium uppercase tracking-[0.14em] sm:tracking-[0.18em] text-mauve-400">
+            <span class="sm:hidden">{site.trayectoriaAnios} años de ejercicio</span>
+            <span class="hidden sm:inline">Abogada · {site.trayectoriaAnios} años de ejercicio profesional</span>
           </span>
         </p>
 
-        <h1 class="font-display font-semibold text-ink leading-[1.12] sm:leading-[1.08] text-[2rem] sm:text-[2.6rem] md:text-5xl lg:text-[3.6rem] mb-4 sm:mb-6 text-balance">
+        <h1 class="font-display font-semibold text-ink leading-[1.12] sm:leading-[1.08] text-[1.85rem] sm:text-[2.6rem] md:text-5xl lg:text-[3.6rem] mb-4 sm:mb-6 text-balance">
           Soluciones jurídicas
           <span class="block text-brand-500">con criterio y cercanía</span>
         </h1>
 
-        <p class="text-[0.95rem] sm:text-base md:text-lg text-ink-soft leading-relaxed max-w-md sm:max-w-xl mx-auto lg:mx-0 mb-7 sm:mb-9">
-          Acompañamiento personalizado en sucesiones y derecho de familia.
-          Una mirada directa, orientada a resolver y a negociar la mejor salida
-          para cada caso.
+        <p class="text-[0.95rem] sm:text-base md:text-lg text-ink-soft leading-relaxed max-w-md sm:max-w-xl mx-auto lg:mx-0 mb-6 sm:mb-9">
+          Ejerciendo la profesión de Abogada hace más de {site.trayectoriaAnios} años
+          en toda la Provincia de Buenos Aires y CABA, de manera personalizada y
+          enfocada en el logro de los objetivos trazados junto al cliente.
         </p>
 
-        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center flex-wrap gap-3 sm:gap-4 items-stretch sm:items-center">
           <a href={consultaLink} target="_blank" rel="noopener noreferrer" class="btn-primary w-full sm:w-auto">
-            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
             </svg>
-            Hacer una consulta
+            WhatsApp
           </a>
-          <a href="#areas" class="btn-secondary w-full sm:w-auto">
-            Ver áreas de práctica
+          <a href={turnosLink} target="_blank" rel="noopener noreferrer" class="btn-secondary w-full sm:w-auto">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            Turnos
+          </a>
+          <a
+            href="#areas"
+            class="group inline-flex items-center justify-center gap-3 font-display font-medium text-ink-soft hover:text-brand-500 transition-colors duration-200 sm:ml-1 py-2 sm:py-0 px-1 sm:px-0 self-center sm:self-auto"
+          >
+            <span class="hidden sm:inline-block h-px w-7 bg-sand-400 group-hover:bg-brand-500 transition-colors" aria-hidden="true"></span>
+            Áreas de trabajo
           </a>
         </div>
       </div>
 
       <!-- Retrato -->
-      <div class="lg:col-span-5" data-reveal>
-        <div class="relative max-w-xs sm:max-w-sm mx-auto lg:mx-0 lg:ml-auto">
+      <div class="lg:col-span-5 order-1 lg:order-2" data-reveal>
+        <div class="relative max-w-[15rem] sm:max-w-sm mx-auto lg:mx-0 lg:ml-auto">
           <!-- Marco escalonado: dos planos que dan sensación editorial -->
           <div class="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 w-full h-full rounded-[var(--radius-card)] border border-sand-300" aria-hidden="true"></div>
-          <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-16 sm:w-24 h-16 sm:h-24 rounded-[var(--radius-card)] bg-brand-50" aria-hidden="true"></div>
+          <div class="absolute -top-3 -right-3 sm:-top-4 sm:-right-4 w-12 sm:w-24 h-12 sm:h-24 rounded-[var(--radius-card)] bg-brand-50" aria-hidden="true"></div>
           <img
-            src="/maria-laura-escritorio.png"
+            src="/laura.jpeg"
             alt={`${site.abogada}, abogada del estudio, en su despacho`}
             class="relative w-full rounded-[var(--radius-card)] shadow-card object-cover"
             width="690"
             height="1086"
             loading="eager"
           />
-          <!-- Tarjeta flotante con el nombre -->
-          <div class="absolute -bottom-5 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:translate-x-0 bg-paper border border-line rounded-[var(--radius-card)] shadow-soft px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap">
+          <!-- Tarjeta flotante con el nombre (solo desktop: en mobile el nombre ya está en el NavBar) -->
+          <div class="hidden sm:block absolute -bottom-5 left-1/2 -translate-x-1/2 lg:left-auto lg:right-6 lg:translate-x-0 bg-paper border border-line rounded-[var(--radius-card)] shadow-soft px-4 sm:px-5 py-2.5 sm:py-3 whitespace-nowrap">
             <p class="font-display text-[0.8rem] sm:text-sm font-semibold text-ink leading-tight">{site.abogada}</p>
             <p class="text-[0.68rem] sm:text-xs text-mauve-400">Abogada · Matrícula profesional</p>
           </div>
@@ -86,7 +101,7 @@ const credenciales = [
     </div>
 
     <!-- Franja de credibilidad -->
-    <div class="mt-16 sm:mt-20 md:mt-24 border-t border-line" data-reveal>
+    <div class="mt-10 sm:mt-20 md:mt-24 border-t border-line" data-reveal>
       <dl class="grid grid-cols-2 lg:grid-cols-4">
         {credenciales.map((c, i) => (
           <div class:list={[

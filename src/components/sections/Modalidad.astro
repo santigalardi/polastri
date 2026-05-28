@@ -5,11 +5,13 @@
   y despacho en Tigre con horario a convenir. No se publica la dirección
   exacta de Tigre por ser domicilio particular: solo se indica la zona.
 */
-import { ubicaciones } from '../../data/site';
+import { ubicaciones, site } from '../../data/site';
+
+const turnosLink = site.agendaTurnosUrl;
 ---
 
 <section class="section-warm">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 pt-10 sm:pt-12 md:pt-14 pb-10 sm:pb-12 md:pb-14">
     <div class="max-w-2xl mb-8 sm:mb-12" data-reveal>
       <p class="eyebrow mb-3">Modalidad de atención</p>
       <h2 class="text-[1.7rem] sm:text-3xl md:text-4xl font-display font-semibold mb-4">
@@ -42,9 +44,33 @@ import { ubicaciones } from '../../data/site';
       ))}
     </div>
 
-    <p class="text-sm text-ink-muted mt-6 max-w-2xl" data-reveal>
-      Para coordinar una entrevista presencial, escribanos por WhatsApp y le
-      confirmamos el punto de atención y el horario disponible.
-    </p>
+    <div class="mt-6 rounded-[var(--radius-card)] border border-line bg-paper p-6 sm:p-7 flex flex-col md:flex-row md:items-center gap-5 md:gap-8" data-reveal>
+      <div class="flex items-start gap-4 grow">
+        <span class="w-10 h-10 rounded-full bg-brand-50 flex items-center justify-center shrink-0 mt-0.5">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-brand-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+        </span>
+        <div>
+          <h3 class="font-display text-lg font-semibold text-ink mb-1">Reservá tu turno</h3>
+          <p class="text-sm text-ink-soft leading-relaxed">
+            Puede agendar el turno presencial en línea, según la disponibilidad
+            de cada sede. Para atención <strong class="text-ink">online</strong>,
+            coordinamos día y horario por WhatsApp.
+          </p>
+        </div>
+      </div>
+      <a
+        href={turnosLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary w-full md:w-auto shrink-0"
+      >
+        Reservar turno presencial
+      </a>
+    </div>
   </div>
 </section>

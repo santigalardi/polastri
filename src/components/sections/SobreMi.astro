@@ -8,14 +8,14 @@
 import { site } from '../../data/site';
 
 const hitos = [
-  { dato: `${site.trayectoriaAnios} años`, label: 'de ejercicio profesional' },
-  { dato: 'Poder Judicial', label: 'experiencia previa en el ámbito' },
-  { dato: 'Presencial y online', label: 'modalidad de atención' },
+  { dato: 'UBA', año: '2001', label: 'Abogada' },
+  { dato: 'Escuela Judicial', año: '1997', label: 'Provincia de Buenos Aires' },
+  { dato: 'UOC', año: '2024', label: 'Matrícula de honor · T.I.C.' },
 ];
 ---
 
 <section id="sobre-mi" class="section-warm scroll-mt-20">
-  <div class="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-24 grid lg:grid-cols-5 gap-10 sm:gap-12 lg:gap-14 items-center">
+  <div class="max-w-6xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 md:pt-24 pb-10 sm:pb-12 md:pb-14 grid lg:grid-cols-5 gap-10 sm:gap-12 lg:gap-14 items-center">
     <!-- Retrato -->
     <div class="lg:col-span-2 relative" data-reveal>
       <div class="absolute -inset-3 border border-sand-300 rounded-[var(--radius-card)] rotate-2" aria-hidden="true"></div>
@@ -40,28 +40,33 @@ const hitos = [
 
       <div class="space-y-4 text-ink-soft leading-relaxed">
         <p>
-          Ejerzo de forma independiente desde hace más de dos décadas. A lo
-          largo de ese camino pasé por el Poder Judicial y acompañé a familias
-          y trabajadores en los momentos en que más necesitaban una respuesta
-          legal clara.
+          Soy abogada egresada de la Universidad de Buenos Aires (2001),
+          Matrícula de honor en la Universidad Oberta de Cataluña (T.I.C. 2024),
+          Técnica en Inmobiliaria (CPI, 1997) y certificada en la Escuela
+          Judicial de la Provincia de Buenos Aires (1997), entre otras
+          certificaciones.
         </p>
         <p>
-          Mi forma de trabajar es directa: atiendo rápido, me involucro de
-          lleno en cada caso y no aflojo hasta resolverlo. Me especialicé en
-          negociación, porque creo que el mejor resultado casi siempre llega
-          de un buen acuerdo.
+          Me inicié trabajando en el Poder Judicial de la Provincia de Buenos
+          Aires, lo que me dio una perspectiva que pocos abogados tienen:
+          entender cómo razonan y deciden los jueces desde adentro.
         </p>
         <p>
-          No es una profesión que esté aprendiendo sobre la marcha: es lo que
-          hago desde el primer día, con el mismo compromiso de siempre.
+          Mi forma de trabajar es directa: le explico el panorama completo
+          desde el primer encuentro, sin rodeos y sin tecnicismos innecesarios.
+        </p>
+        <p>
+          Creo que el mejor resultado casi siempre viene de un buen acuerdo.
+          Por eso la negociación es el eje de mi estrategia en cada caso.
         </p>
       </div>
 
-      <dl class="mt-8 grid sm:grid-cols-3 gap-5">
+      <dl class="mt-7 sm:mt-8 grid grid-cols-3 gap-x-3 sm:gap-x-5 gap-y-6">
         {hitos.map((h) => (
-          <div class="border-l-2 border-sand-300 pl-4">
-            <dt class="font-display text-lg font-semibold text-ink">{h.dato}</dt>
-            <dd class="text-sm text-ink-muted">{h.label}</dd>
+          <div class="border-l-2 border-sand-300 pl-2.5 sm:pl-4">
+            <p class="font-display text-[0.62rem] sm:text-[0.68rem] uppercase tracking-[0.12em] sm:tracking-[0.16em] text-mauve-400 mb-0.5 sm:mb-1">{h.año}</p>
+            <dt class="font-display text-sm sm:text-base font-semibold text-ink leading-tight">{h.dato}</dt>
+            <dd class="hidden sm:block text-sm text-ink-muted mt-1 leading-snug">{h.label}</dd>
           </div>
         ))}
       </dl>
