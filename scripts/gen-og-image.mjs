@@ -14,7 +14,7 @@ import path from 'node:path';
 
 const ROOT = process.cwd();
 const logo = fs.readFileSync(path.join(ROOT, 'public/logo-nobg.png')).toString('base64');
-const retrato = fs.readFileSync(path.join(ROOT, 'public/maria-laura-retrato.png')).toString('base64');
+const retrato = fs.readFileSync(path.join(ROOT, 'public/maria-laura-retrato.webp')).toString('base64');
 
 const html = `<!doctype html><html><head><meta charset="utf-8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,7 +74,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
     </div>
     <div class="right">
       <div class="portrait-wrap">
-        <img src="data:image/png;base64,${retrato}" alt="">
+        <img src="data:image/webp;base64,${retrato}" alt="">
       </div>
     </div>
   </div>

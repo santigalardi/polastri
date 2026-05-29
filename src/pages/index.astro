@@ -8,13 +8,10 @@ import ComoTrabajo from '../components/sections/ComoTrabajo.astro';
 import Modalidad from '../components/sections/Modalidad.astro';
 import Faq from '../components/sections/Faq.astro';
 import Contacto from '../components/sections/Contacto.astro';
-import { site } from '../data/site';
+import { seo } from '../data/site';
 ---
 
-<Layout
-  title={`${site.nombre} — Sucesiones y Derecho de Familia | Abogada ${site.abogada}`}
-  description="Estudio jurídico especializado en sucesiones y derecho de familia. Atención presencial y online en Tres de Febrero y Tigre."
->
+<Layout title={seo.home.title} description={seo.home.description} schema>
   <Hero />
   <SobreMi />
   <Areas />

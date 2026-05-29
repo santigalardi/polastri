@@ -8,15 +8,36 @@
 export const site = {
   nombre: 'Abogada Polastri',
   abogada: 'María Laura Polastri',
-  // PENDIENTE: confirmar dominio con la clienta (studiopolastri vs estudiopolastri).
-  dominio: 'studiopolastri.com.ar',
+  // Dominio actual en producción (Cloudflare Pages). PENDIENTE: migrar al dominio
+  // propio cuando la clienta lo configure (studiopolastri vs estudiopolastri).
+  // Al cambiarlo, actualizar también `site` en astro.config.mjs.
+  dominio: 'polastri.pages.dev',
   tagline: 'Asesoramiento legal con compromiso y resultados.',
   descripcion:
     'Estudio jurídico especializado en sucesiones y derecho de familia. ' +
     'Acompañamiento cercano y personalizado en cada caso.',
   trayectoriaAnios: 24,
+  // Teléfono / WhatsApp oficial (NAP — debe coincidir en todos los directorios).
+  telefono: '+5491165635552',
+  // PENDIENTE: email profesional propio (ej. consultas@polastri.com.ar). Por ahora
+  // sin definir; no se publica un @gmail por recomendación del doc de SEO.
+  email: '',
   // Reserva de turnos presenciales por Google Calendar (link enviado por la clienta).
   agendaTurnosUrl: 'https://calendar.app.google/8q5xxUcC2h2Af5487',
+};
+
+/* ───────── SEO por página ─────────
+   Títulos y descripciones optimizados según el documento de estrategia SEO
+   (mayo 2026): keywords primarias + geolocalización + diferencial + CTA.
+   Title ≤ 60 car. ideal; description ≤ 160 car. */
+export const seo = {
+  home: {
+    title: 'Abogada Polastri | Sucesiones y Familia · Tigre y Tres de Febrero',
+    description:
+      'Abogada con 24 años de ejercicio en sucesiones, divorcio y cuota ' +
+      'alimentaria. Atención en Tigre y Santos Lugares. Posibilidad de financiar ' +
+      'los gastos de la sucesión. Consultá sin cargo ni compromiso.',
+  },
 };
 
 /* ───────── Redes sociales ─────────

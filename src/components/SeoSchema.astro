@@ -1,0 +1,95 @@
+---
+/*
+  Datos estructurados (schema.org JSON-LD) para la home.
+  - LegalService: identifica el estudio, zonas de atención, horarios, áreas y redes.
+  - FAQPage: habilita resultados enriquecidos a partir de las preguntas frecuentes.
+
+  Notas de privacidad/datos (según CLAUDE.md y doc de SEO):
+  - No se publica la dirección exacta de Tigre (domicilio particular): se usa
+    solo la localidad. Tampoco hay calle/número confirmados para Santos Lugares,
+    así que se omite streetAddress hasta tener el dato (mejor que un placeholder).
+  - email queda fuera del schema mientras no haya casilla profesional propia.
+*/
+import { site, redes } from '../data/site';
+import { faqs } from '../data/faqs';
+
+const base = (Astro.site ?? new URL(`https://${site.dominio}`)).origin;
+
+const legalService = {
+  '@context': 'https://schema.org',
+  '@type': 'LegalService',
+  name: `Abogada ${site.abogada}`,
+  alternateName: site.nombre,
+  url: `${base}/`,
+  image: `${base}/og-image.png`,
+  telephone: site.telefono,
+  ...(site.email ? { email: site.email } : {}),
+  description:
+    'Estudio jurídico especializado en sucesiones, derecho de familia, ' +
+    'inmobiliario y laboral. Financiación de gastos sucesorios disponible.',
+  priceRange: '$$',
+  areaServed: [
+    { '@type': 'City', name: 'Tigre', addressRegion: 'Buenos Aires', addressCountry: 'AR' },
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Partido de Tres de Febrero',
+      addressRegion: 'Buenos Aires',
+      addressCountry: 'AR',
+    },
+  ],
+  address: [
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Santos Lugares',
+      addressRegion: 'Buenos Aires',
+      addressCountry: 'AR',
+    },
+    {
+      '@type': 'PostalAddress',
+      addressLocality: 'Tigre',
+      addressRegion: 'Buenos Aires',
+      addressCountry: 'AR',
+    },
+  ],
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Tuesday', 'Thursday'],
+      opens: '10:00',
+      closes: '16:30',
+      description: 'Santos Lugares',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Wednesday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+      description: 'Tigre — horario a convenir',
+    },
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Áreas de práctica',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Sucesiones' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Derecho de Familia' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Derecho Inmobiliario' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Derecho Laboral' } },
+    ],
+  },
+  sameAs: [redes.instagram, redes.facebook, redes.linkedin],
+};
+
+const faqPage = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(legalService)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />
