@@ -25,15 +25,10 @@ backend:
 # local_backend: true
 
 # Carpeta donde Decap sube imágenes y PDFs cargados desde el panel.
+# La compresión/optimización de las imágenes la hace el build en cada deploy
+# (ver scripts/optimize-uploads.mjs), así que no hace falta configurar nada acá.
 media_folder: "public/uploads"
 public_folder: "/uploads"
-
-# Límite de tamaño para los archivos subidos (8 MB). Evita que se suban fotos
-# enormes de cámara. La compresión/optimización real la hace el build (ver
-# scripts/optimize-uploads.mjs), que corre en cada deploy.
-media_library:
-  config:
-    max_file_size: 8388608  # 8 MB en bytes
 
 # Idioma del panel
 locale: "es"
