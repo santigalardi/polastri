@@ -1,0 +1,97 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { seo } from '../../data/site';
+
+/* Listado del blog. Trae las publicaciones no borrador, ordenadas por fecha
+   descendente (la más reciente primero). */
+const publicaciones = (await getCollection('publicaciones', (p) => !p.data.borrador)).sort(
+  (a, b) => b.data.fecha.getTime() - a.data.fecha.getTime()
+);
+
+const fmtFecha = (d: Date) =>
+  d.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<Layout title={seo.publicaciones.title} description={seo.publicaciones.description}>
+  <section class="bg-cream">
+    <div class="max-w-5xl mx-auto px-5 sm:px-6 pt-14 sm:pt-20 md:pt-24 pb-14 sm:pb-20 md:pb-24">
+      <header class="max-w-2xl mb-10 sm:mb-14" data-reveal>
+        <p class="eyebrow mb-3">Publicaciones</p>
+        <h1 class="text-3xl md:text-4xl font-display font-semibold mb-4">
+          Notas y artículos jurídicos
+        </h1>
+        <span class="rule mb-5"></span>
+        <p class="text-ink-soft leading-relaxed">
+          Análisis y respuestas sobre sucesiones, derecho de familia, despidos e
+          inmobiliario, en lenguaje claro y sin tecnicismos innecesarios.
+        </p>
+      </header>
+
+      {
+        publicaciones.length === 0 ? (
+          <p class="text-ink-muted">Pronto publicaremos las primeras notas.</p>
+        ) : (
+          <div class="grid sm:grid-cols-2 gap-6 sm:gap-8">
+            {publicaciones.map((p) => (
+              <article class="card overflow-hidden flex flex-col" data-reveal>
+                {p.data.portada && (
+                  <a href={`/publicaciones/${p.id}/`} class="block">
+                    <img
+                      src={p.data.portada}
+                      alt={p.data.titulo}
+                      class="w-full h-44 sm:h-48 object-cover"
+                      loading="lazy"
+                    />
+                  </a>
+                )}
+                <div class="p-6 sm:p-7 flex flex-col grow">
+                  <div class="flex items-center gap-3 mb-3">
+                    <span class="inline-block text-[0.68rem] font-display font-medium uppercase tracking-[0.12em] text-brand-600 bg-brand-50 rounded-full px-3 py-1">
+                      {p.data.categoria}
+                    </span>
+                    <time class="text-xs text-ink-muted" datetime={p.data.fecha.toISOString()}>
+                      {fmtFecha(p.data.fecha)}
+                    </time>
+                  </div>
+                  <h2 class="text-xl font-display font-semibold text-ink leading-snug mb-2">
+                    <a href={`/publicaciones/${p.id}/`} class="hover:text-brand-600 transition-colors">
+                      {p.data.titulo}
+                    </a>
+                  </h2>
+                  <p class="text-sm text-ink-soft leading-relaxed grow">{p.data.resumen}</p>
+                  <a
+                    href={`/publicaciones/${p.id}/`}
+                    class="link-underline mt-4 inline-block text-sm font-medium"
+                  >
+                    Leer más →
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    items.forEach((item) => observer.observe(item));
+  } else {
+    items.forEach((item) => item.classList.add('is-visible'));
+  }
+</script>

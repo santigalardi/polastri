@@ -1,0 +1,10 @@
+name = "polastri-cms-oauth"
+main = "src/index.js"
+compatibility_date = "2025-05-01"
+
+# URL pública del Worker (no exponer rutas extra ni preview innecesario).
+workers_dev = true
+
+# IMPORTANTE: GITHUB_CLIENT_ID y GITHUB_CLIENT_SECRET se cargan como SECRETOS
+# (wrangler secret put ...), NO como [vars]. Si se declaran en [vars] aunque sea
+# vacíos, pisan al secreto y el login falla. Por eso no van acá.

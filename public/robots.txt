@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /uploads/
 
 Sitemap: https://polastri.pages.dev/sitemap-index.xml

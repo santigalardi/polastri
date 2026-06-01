@@ -1,0 +1,67 @@
+# Configuración de Decap CMS — Panel de publicaciones de Abogada Polastri
+#
+# Backend: GitHub. Al guardar una publicación, el panel hace commit del archivo
+# Markdown a este repositorio y Cloudflare Pages vuelve a desplegar el sitio.
+#
+# IMPORTANTE — autenticación (pendiente de configurar una vez):
+#   Decap necesita un proveedor de OAuth para que Laura inicie sesión con GitHub.
+#   Cloudflare Pages no lo trae integrado. Hay que desplegar un pequeño "OAuth
+#   proxy" (worker) y apuntar `base_url` a su dominio. Opciones habituales:
+#     - Cloudflare Worker de OAuth para Decap (gratis), o
+#     - el servicio mantenido por la comunidad (sveltia/decap oauth).
+#   Mientras no esté el proxy, /admin carga pero el login fallará.
+#   Para probar localmente sin GitHub, usar: `npx decap-server` y descomentar
+#   la línea `local_backend: true` de abajo.
+
+backend:
+  name: github
+  repo: santigalardi/polastri
+  branch: main
+  # OAuth proxy (Cloudflare Worker) que completa el login con GitHub.
+  base_url: https://polastri-cms-oauth.santiago-1fb.workers.dev
+
+# Permite editar con el servidor local (npx decap-server) durante el desarrollo.
+# Descomentar SOLO para probar en local; debe quedar comentado en producción.
+# local_backend: true
+
+# Carpeta donde Decap sube imágenes y PDFs cargados desde el panel.
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+# Límite de tamaño para los archivos subidos (8 MB). Evita que se suban fotos
+# enormes de cámara. La compresión/optimización real la hace el build (ver
+# scripts/optimize-uploads.mjs), que corre en cada deploy.
+media_library:
+  config:
+    max_file_size: 8388608  # 8 MB en bytes
+
+# Idioma del panel
+locale: "es"
+
+collections:
+  - name: "publicaciones"
+    label: "Publicaciones"
+    label_singular: "Publicación"
+    folder: "src/content/publicaciones"
+    create: true
+    # El campo que identifica la entrada y genera el nombre del archivo .md.
+    # Sin esto, Decap busca "title" (en inglés), no lo encuentra y arma un slug roto.
+    identifier_field: "titulo"
+    slug: "{{slug}}"
+    summary: "{{fecha}} — {{titulo}}"
+    sortable_fields: ["fecha", "titulo"]
+    fields:
+      - { name: "titulo", label: "Título", widget: "string" }
+      - { name: "fecha", label: "Fecha", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false }
+      - name: "categoria"
+        label: "Categoría"
+        widget: "select"
+        default: "Artículos"
+        options: ["Artículos", "Sucesiones", "Familia", "Inmobiliario", "Laboral"]
+      - { name: "resumen", label: "Resumen (aparece en el listado)", widget: "text" }
+      - { name: "autor", label: "Autor/a", widget: "string", default: "María Laura Polastri" }
+      - { name: "fuente", label: "Fuente / revista", widget: "string", required: false }
+      - { name: "portada", label: "Imagen de portada", widget: "image", required: false }
+      - { name: "pdf", label: "PDF del artículo completo", widget: "file", required: false }
+      - { name: "borrador", label: "Guardar como borrador (no se publica)", widget: "boolean", default: false }
+      - { name: "body", label: "Contenido", widget: "markdown" }

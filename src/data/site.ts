@@ -38,6 +38,12 @@ export const seo = {
       'alimentaria. Atención en Tigre y Santos Lugares. Posibilidad de financiar ' +
       'los gastos de la sucesión. Consultá sin cargo ni compromiso.',
   },
+  publicaciones: {
+    title: 'Publicaciones | Abogada Polastri',
+    description:
+      'Notas y artículos jurídicos sobre sucesiones, divorcios, cuota ' +
+      'alimentaria y despidos en Argentina, en lenguaje claro y sin tecnicismos.',
+  },
 };
 
 /* ───────── Redes sociales ─────────
