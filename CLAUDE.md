@@ -69,7 +69,7 @@ Secciones acordadas:
 
 ## Activos digitales
 
-- **Dominio:** `studiopolastri.com.ar` — gestionado vía Google Workspace. La clienta verificará en sus suscripciones de Google dónde se compró el dominio.
+- **Dominio:** `estudiopolastri.com` — dominio propio en producción (apuntado a Cloudflare Pages).
 - **Hosting:** probablemente no contratado aún. Se evalúa la necesidad ~2 semanas después del desarrollo inicial.
 - **Redes sociales** (integrar al sitio): Instagram ("Abogada Polastri"), LinkedIn, y un Linktree. La clienta compartirá los enlaces.
 

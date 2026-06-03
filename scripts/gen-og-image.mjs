@@ -69,7 +69,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
       <div class="foot">
         <span>Santos Lugares · Tigre</span><span class="dot"></span>
         <span>Presencial y online</span><span class="dot"></span>
-        <span>studiopolastri.com.ar</span>
+        <span>estudiopolastri.com</span>
       </div>
     </div>
     <div class="right">

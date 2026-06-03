@@ -24,7 +24,7 @@ Al final, el flujo queda así:
 1. Entrá a: https://github.com/settings/developers → **OAuth Apps** → **New OAuth App**
 2. Completá:
    - **Application name:** `Polastri CMS`
-   - **Homepage URL:** `https://polastri.pages.dev`
+   - **Homepage URL:** `https://estudiopolastri.com`
    - **Authorization callback URL:** `https://polastri-cms-oauth.<tu-subdominio>.workers.dev/callback`
      > El `<tu-subdominio>` lo vas a saber después del Paso 2 (es tu subdominio de
      > workers.dev). Si querés, poné algo provisorio y lo editás al terminar el Paso 2.
@@ -108,7 +108,7 @@ Para que Laura pueda publicar, su cuenta de GitHub necesita permiso de
 ## Listo ✅
 
 Después del deploy a producción, Laura entra a
-`https://polastri.pages.dev/admin/`, hace clic en **"Iniciar sesión con GitHub"**,
+`https://estudiopolastri.com/admin/`, hace clic en **"Iniciar sesión con GitHub"**,
 autoriza una vez, y ya puede escribir y publicar. Cada publicación dispara un
 deploy automático del sitio.
 

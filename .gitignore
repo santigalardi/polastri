@@ -15,6 +15,9 @@ dist-ssr
 # Astro
 .astro/
 
+# Docs internos del proyecto
+docs/
+
 # env
 .env
 .env.local

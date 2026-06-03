@@ -8,10 +8,9 @@
 export const site = {
   nombre: 'Abogada Polastri',
   abogada: 'María Laura Polastri',
-  // Dominio actual en producción (Cloudflare Pages). PENDIENTE: migrar al dominio
-  // propio cuando la clienta lo configure (studiopolastri vs estudiopolastri).
-  // Al cambiarlo, actualizar también `site` en astro.config.mjs.
-  dominio: 'polastri.pages.dev',
+  // Dominio propio en producción. Al cambiarlo, actualizar también `site` en
+  // astro.config.mjs.
+  dominio: 'estudiopolastri.com',
   tagline: 'Asesoramiento legal con compromiso y resultados.',
   descripcion:
     'Estudio jurídico especializado en sucesiones y derecho de familia. ' +

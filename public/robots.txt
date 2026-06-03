@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /uploads/
 
-Sitemap: https://polastri.pages.dev/sitemap-index.xml
+Sitemap: https://estudiopolastri.com/sitemap-index.xml
