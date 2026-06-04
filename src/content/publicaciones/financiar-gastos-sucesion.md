@@ -1,6 +1,6 @@
 ---
 titulo: Cómo financiar los gastos de una sucesión y pagar al vender la propiedad
-fecha: 2026-05-20
+fecha: 2026-06-04
 categoria: Sucesiones
 resumen: Muchas familias posponen la venta de un inmueble heredado porque no
   pueden afrontar los gastos del proceso sucesorio. Explicamos cómo funciona la
@@ -11,7 +11,7 @@ portada: /uploads/whatsapp-image-2026-05-22-at-13.00.30.jpeg
 pdf: ""
 borrador: false
 ---
-## El problema más común en una sucesión con inmueble
+## El problema más común: Un inmueble con sucesión
 
 Cuando una persona fallece y deja una propiedad, los herederos suelen
 encontrarse con un obstáculo inesperado: para poder vender ese inmueble primero
