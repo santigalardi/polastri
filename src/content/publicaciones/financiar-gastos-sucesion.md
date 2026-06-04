@@ -11,7 +11,6 @@ portada: /uploads/whatsapp-image-2026-05-22-at-13.00.30.jpeg
 pdf: ""
 borrador: false
 ---
-
 ## El problema más común en una sucesión con inmueble
 
 Cuando una persona fallece y deja una propiedad, los herederos suelen
@@ -38,9 +37,13 @@ hasta la concreción de la operación.
 
 Está pensada especialmente para quienes:
 
-- Heredaron una propiedad y quieren venderla.
-- No cuentan con los recursos para afrontar los gastos del sucesorio ahora.
-- Prefieren no descapitalizarse antes de concretar la venta.
+* Heredaron una propiedad y quieren venderla.
+* No cuentan con los recursos para afrontar los gastos del sucesorio ahora.
+* Prefieren no descapitalizarse antes de concretar la venta.
 
 Cada caso es distinto. Lo ideal es conversar su situación concreta para evaluar
 cómo aplicar esta modalidad y darle una estimación de tiempos y costos.
+
+(Ver nota en [Instagram](https://www.instagram.com/p/DLD5LTsyAhy/)) <https://www.instagram.com/p/DLD5LTsyAhy/>\
+\
+Seguime en https://www.instagram.com/abogadapolastri/
