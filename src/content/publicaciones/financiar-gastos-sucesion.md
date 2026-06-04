@@ -44,6 +44,6 @@ Está pensada especialmente para quienes:
 Cada caso es distinto. Lo ideal es conversar su situación concreta para evaluar
 cómo aplicar esta modalidad y darle una estimación de tiempos y costos.
 
-(Ver nota en [Instagram](https://www.instagram.com/p/DLD5LTsyAhy/)) <https://www.instagram.com/p/DLD5LTsyAhy/>\
+(Ver nota en [Instagram](https://www.instagram.com/p/DLD5LTsyAhy/)) <https://www.instagram.com/p/DLFBTrBRUS6/>\
 \
 Seguime en https://www.instagram.com/abogadapolastri/
