@@ -27,6 +27,20 @@ const canonical = new URL(Astro.url.pathname, siteBase).href;
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- Google Tag Manager -->
+    <script is:inline>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-PDFJLVN9');
+    </script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
@@ -63,11 +77,50 @@ const canonical = new URL(Astro.url.pathname, siteBase).href;
     {schema && <SeoSchema />}
   </head>
   <body class="flex flex-col min-h-screen">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-PDFJLVN9"
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <NavBar />
     <main class="grow">
       <slot />
     </main>
     <Footer />
     <WhatsAppButton />
+
+    <!-- Tracking de clicks de WhatsApp: pushea `whatsapp_click` a dataLayer (GTM) -->
+    <script is:inline>
+      (function () {
+        window.dataLayer = window.dataLayer || [];
+        document.addEventListener(
+          'click',
+          function (e) {
+            var link = e.target.closest('a[href*="wa.me"], a[href*="api.whatsapp.com"]');
+            if (!link) return;
+
+            // Origen del click: data-wa-location explícito, el id de la sección/footer
+            // más cercano, o el botón flotante.
+            var section = link.closest('section[id], footer');
+            var location =
+              link.getAttribute('data-wa-location') ||
+              (link.getAttribute('aria-label') === 'Contactar por WhatsApp' ? 'floating_button' : '') ||
+              (section && (section.id || (section.tagName === 'FOOTER' ? 'footer' : ''))) ||
+              'unknown';
+
+            window.dataLayer.push({
+              event: 'whatsapp_click',
+              wa_location: location,
+              link_url: link.href,
+            });
+          },
+          true,
+        );
+      })();
+    </script>
   </body>
 </html>
